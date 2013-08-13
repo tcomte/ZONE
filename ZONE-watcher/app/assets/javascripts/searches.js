@@ -72,8 +72,11 @@ function addSource(table, value) {
         }
         $("#addAllTwitter").attr("disabled", true);
     } else if (table == "RSS") {
-        $("#wellSources").append("<span class='label-wrap label label-warning rssSource' >" + $(value).val() + " <i class='icon-remove pointerMouse' onclick='$(this).closest(\"span\").next(\"br\").remove();$(this).closest(\"span\").remove();checkWell()'></i></span> ");
-        $("#addAllRSS").attr("disabled", true);
+		if ( ( $(value).val().match("^http://") && $(value).val() != "http://" ) || ( $(value).val().match("^https://") && $(value).val() != "https://" ) ){
+        	$("#wellSources").append("<span class='label-wrap label label-warning rssSource' >" + $(value).val() + " <i class='icon-remove pointerMouse' onclick='$(this).closest(\"span\").next(\"br\").remove();$(this).closest(\"span\").remove();checkWell()'></i></span> ");
+        	$("#addAllRSS").attr("disabled", true);
+      	} else
+      		return false;
     }
     $(value).val("");
     $(value).html("");
