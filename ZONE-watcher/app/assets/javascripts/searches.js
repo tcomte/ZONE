@@ -40,7 +40,9 @@ $(document).ready(function() {
     		reverseSwitchTab();
     		e.preventDefault();
     	}
-   })  
+   })
+   $('#btnyourRss').popover();
+   $('#btnOpml').popover();  
 });
 
 //slide down the source tab for the source selected
